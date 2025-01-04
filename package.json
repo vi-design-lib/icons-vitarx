@@ -1,0 +1,38 @@
+{
+  "name": "@vi-design/icons-vitarx",
+  "private": false,
+  "version": "0.0.0-beta.1",
+  "description": "@vi-design/icon-vitarx 是为vitarx框架打造的图标组件。",
+  "main": "./dist/icons.umd.js",
+  "module": "./dist/icons.es.js",
+  "types": "./dist/icons.es.d.ts",
+  "author": "ZhuChongLin <8210856@qq.com>",
+  "keywords": [
+    "icons-vitarx",
+    "@vi-design/icons-vitarx"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && tsc && vite build",
+    "prepublishOnly": "npm run build:lib",
+    "push": "npm publish --access=public"
+  },
+  "peerDependencies": {
+    "vitarx": "^1.0.0-beta.20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "prettier": "^3.3.3",
+    "sass-embedded": "^1.83.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.6",
+    "vite-plugin-dts": "^4.4.0",
+    "vite-plugin-vitarx": "^1.0.0-beta.14"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
+}
