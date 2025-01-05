@@ -20,13 +20,9 @@ export default abstract class SvgIcon extends Icons {
       return createElement('path', { d })
     })
     return createElement('svg', {
+      ...this.svgProps,
       viewBox: this.viewBox,
-      width: this.size,
-      height: this.size,
-      color: this.color,
       ariaLabel: this.label,
-      style: this.style,
-      class: this.className,
       children
     })
   }
