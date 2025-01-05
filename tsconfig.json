@@ -17,22 +17,13 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     /* Vitarx Support*/
-    "types": [
-      "vitarx/dist/index.d.ts"
-    ],
-    "jsx": "react-jsx",
+    "types": ["vitarx/dist/index.d.ts","node"],
+    "jsx": "preserve",
     "jsxImportSource": "vitarx",
     /* Paths */
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src"]
 }
