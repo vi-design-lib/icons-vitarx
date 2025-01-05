@@ -1,7 +1,7 @@
-import * as https from 'node:https'
-import nodePath from 'node:path'
 import { load } from 'cheerio'
 import * as fs from 'node:fs'
+import * as https from 'node:https'
+import nodePath from 'node:path'
 
 interface Glyph {
   icon_id: string
@@ -42,7 +42,8 @@ function downloadAndParseIconfont(iconfontJsUrl: string): Promise<string> {
           const regex = /<svg.*?>.*?<\/svg>/s
           const match = data.match(regex)
           if (!match) return reject(new Error('No SVG found in iconfont.js'))
-          resolve(data)
+          fs.writeFileSync(nodePath.join(process.cwd(), 'iconfont.js'), data)
+          resolve(match[0])
         })
       })
       .on('error', (err) => {
@@ -88,7 +89,6 @@ const iconfontJsPath = nodePath.join(process.cwd(), '..', '..', 'src/assets/icon
 
   // 下载和解析iconfont.js
   const svgContent = await downloadAndParseIconfont(iconfontJsUrl)
-
   // 解析svg内容
   const $ = load(svgContent)
   let exports: string[] = []
