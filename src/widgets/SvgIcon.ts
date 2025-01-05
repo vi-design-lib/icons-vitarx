@@ -13,11 +13,8 @@ export default abstract class SvgIcon extends Icons {
    */
   protected override build(): Element {
     const children = this.paths.map((d, i) => {
-      if (this.pathFill) {
-        const fill = this.pathFill[i] ?? 'currentColor'
-        return createElement('path', { d, fill })
-      }
-      return createElement('path', { d })
+      const fill = this.pathFill?.[i] ?? 'currentColor'
+      return createElement('path', { d, fill })
     })
     return createElement('svg', {
       ...this.svgProps,
