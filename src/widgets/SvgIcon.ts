@@ -1,5 +1,5 @@
-import Icons from '@/widgets/Icons.js'
 import { createElement, Element } from 'vitarx'
+import Icons from './Icons.js'
 
 export default abstract class SvgIcon extends Icons {
   // 子类必须实现，返回svg的viewBox属性
