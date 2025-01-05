@@ -112,7 +112,7 @@ export default class Icons extends Widget<IconProps> {
    * 获取图标旋转角度
    */
   get rotate() {
-    return this.props.rotate || 0
+    return this.props.rotate ?? Icons.#commonProps.rotate ?? 0
   }
 
   /**
