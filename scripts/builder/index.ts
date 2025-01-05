@@ -115,7 +115,7 @@ const iconfontJsPath = nodePath.join(process.cwd(), '..', '..', 'src/assets/icon
       const viewBox = $(el).attr('viewBox')!
 
       const componentCode = `// 此文件由 scripts/builder/index.ts 自动生成
-import SvgIcon from '../SvgIcon.ts'
+import SvgIcon from '../SvgIcon.js'
 
 /**
  * ${name} SVG图标
@@ -141,7 +141,7 @@ export default class ${component_name} extends SvgIcon {
       const componentPath = nodePath.join(outDir, `${component_name}.ts`)
       fs.writeFileSync(componentPath, componentCode)
 
-      exports.push(`export {default as ${component_name}} from './${component_name}.ts'`)
+      exports.push(`export {default as ${component_name}} from './${component_name}.js'`)
     })
 
   fs.writeFileSync(nodePath.join(outDir, 'index.ts'), exports.join('\n'))
