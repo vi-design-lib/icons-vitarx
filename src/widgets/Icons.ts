@@ -1,4 +1,5 @@
 import {
+  computed,
   createElement,
   Element,
   mergeCssClass,
@@ -39,6 +40,12 @@ export type IconProps = {
    * @default undefined
    */
   style?: WebRuntimeDom.HTMLStyleProperties
+  /**
+   * 图标旋转角度
+   *
+   * @default 0
+   */
+  rotate?: number
   /**
    * 引用自定义图标
    *
@@ -82,18 +89,30 @@ export default class Icons extends Widget<IconProps> {
     return this.props.color || Icons.#commonProps.color || 'currentColor'
   }
 
-  get style() {
+  #style = computed(() => {
     if (this.props.style && Icons.#commonProps.style) {
       return mergeCssStyle(this.props.style, Icons.#commonProps.style)
     }
     return this.props.style || Icons.#commonProps.style
+  })
+  get style() {
+    return this.#style.value
   }
 
-  get className() {
+  #className = computed(() => {
     if (this.props.className && Icons.#commonProps.className) {
       return mergeCssClass(this.props.className, Icons.#commonProps.className)
     }
     return this.props.className || Icons.#commonProps.className
+  })
+  get className() {
+    return this.#className.value
+  }
+  /**
+   * 获取图标旋转角度
+   */
+  get rotate() {
+    return this.props.rotate || 0
   }
 
   /**
@@ -115,19 +134,24 @@ export default class Icons extends Widget<IconProps> {
   }
 
   /**
+   * svg属性
+   */
+  get svgProps() {
+    const props: Record<string, any> = {
+      width: this.size,
+      height: this.size,
+      color: this.color
+    }
+    if (this.className) props.class = this.className
+    if (this.style) props.style = this.style
+    if (this.rotate) props.transform = `rotate(${this.rotate})`
+    return props
+  }
+
+  /**
    * @inheritDoc
    */
   protected build(): Element {
-    return createElement(
-      'svg',
-      {
-        width: this.size,
-        height: this.size,
-        color: this.color,
-        style: this.style,
-        class: this.className
-      },
-      createElement('use', { 'xlink:href': this.use })
-    )
+    return createElement('svg', this.svgProps, createElement('use', { 'xlink:href': this.use }))
   }
 }
