@@ -19,10 +19,11 @@
     "push": "npm publish --access=public"
   },
   "peerDependencies": {
-    "vitarx": "^1.0.0-beta.20"
+    "vitarx": "^1.0.0-beta.21"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "cheerio": "^1.0.0",
     "prettier": "^3.3.3",
     "sass-embedded": "^1.83.0",
     "typescript": "^5.7.2",
