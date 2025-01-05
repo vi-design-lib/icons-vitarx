@@ -6,10 +6,10 @@
     "skipLibCheck": true,
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,
     /* Linting */
     "strict": true,
     "noUnusedLocals": false,
@@ -23,7 +23,10 @@
     /* Paths */
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true
   },
   "include": ["src"]
 }
