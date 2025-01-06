@@ -133,7 +133,7 @@ export default class ${component_name} extends SvgIcon {
   get viewBox() {
     return '${viewBox}'
   }
-  get label() {
+  override get use() {
     return '${font_class}'
   }
 }`
