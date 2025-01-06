@@ -11,6 +11,12 @@ export default abstract class SvgIcon extends Icons {
   /**
    * @inheritDoc
    */
+  override get ariaLabel() {
+    return this.label
+  }
+  /**
+   * @inheritDoc
+   */
   protected override build(): Element {
     const children = this.paths.map((d, i) => {
       const fill = this.pathFill?.[i] ?? 'currentColor'
@@ -19,7 +25,6 @@ export default abstract class SvgIcon extends Icons {
     return createElement('svg', {
       ...this.svgProps,
       viewBox: this.viewBox,
-      ariaLabel: this.label,
       children
     })
   }
