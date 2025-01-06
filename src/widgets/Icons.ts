@@ -54,6 +54,18 @@ export type IconProps = {
    * @default ''
    */
   use?: string
+  /**
+   * 辅助文本
+   *
+   * @default undefined
+   */
+  ariaLabel?: string
+  /**
+   * 辅助文本是否隐藏
+   *
+   * @default true
+   */
+  ariaHidden?: boolean
 }
 
 /**
@@ -134,13 +146,29 @@ export default class Icons extends Widget<IconProps> {
   }
 
   /**
+   * 无障碍文本
+   */
+  get ariaLabel() {
+    return this.props.ariaLabel || Icons.#commonProps.ariaLabel || this.use.replace(/^#/, '')
+  }
+
+  /**
+   * 无障碍文本是否隐藏
+   */
+  get ariaHidden() {
+    return this.props.ariaHidden ?? Icons.#commonProps.ariaHidden ?? true
+  }
+
+  /**
    * svg属性
    */
   get svgProps() {
     const props: Record<string, any> = {
       width: this.size,
       height: this.size,
-      color: this.color
+      color: this.color,
+      'aria-hidden': this.ariaHidden,
+      'aria-label': this.ariaLabel
     }
     if (this.className) props.class = this.className
     if (this.style) props.style = this.style
