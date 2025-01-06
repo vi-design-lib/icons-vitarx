@@ -6,14 +6,6 @@ export default abstract class SvgIcon extends Icons {
   abstract get viewBox(): string
   // 子类必须实现，返回的数组中的每个元素为path的d属性
   abstract get paths(): string[]
-  // 子类必须实现，返回图标的标签名，用于无障碍访问
-  abstract get label(): string
-  /**
-   * @inheritDoc
-   */
-  override get ariaLabel() {
-    return this.label
-  }
   /**
    * @inheritDoc
    */
