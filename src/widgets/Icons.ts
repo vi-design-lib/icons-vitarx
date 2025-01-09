@@ -1,19 +1,31 @@
 import {
   computed,
   createElement,
-  Element,
+  type Element,
+  type HTMLClassProperties,
+  type HTMLStyleProperties,
   mergeCssClass,
   mergeCssStyle,
   reactive,
-  type WebRuntimeDom,
   Widget
 } from 'vitarx'
 
-export type IconProps = {
+const exclude: Array<keyof IconProps> = [
+  'className',
+  'color',
+  'pathFill',
+  'size',
+  'style',
+  'rotate',
+  'use',
+  'ariaLabel',
+  'ariaHidden'
+] as const
+export interface IconProps {
   /**
    * 图标样式类名
    */
-  className?: WebRuntimeDom.HTMLClassProperties
+  className?: HTMLClassProperties
   /**
    * 图标默认颜色
    */
@@ -39,7 +51,7 @@ export type IconProps = {
    *
    * @default undefined
    */
-  style?: WebRuntimeDom.HTMLStyleProperties
+  style?: HTMLStyleProperties
   /**
    * 图标旋转角度
    *
@@ -168,7 +180,8 @@ export default class Icons extends Widget<IconProps> {
       height: this.size,
       color: this.color,
       'aria-hidden': this.ariaHidden,
-      'aria-label': this.ariaLabel
+      'aria-label': this.ariaLabel,
+      'v-bind': [this.props, exclude]
     }
     if (this.className) props.class = this.className
     if (this.style) props.style = this.style
