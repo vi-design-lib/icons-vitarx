@@ -36,7 +36,7 @@ type IconProps = {
   /**
    * 图标样式类名
    */
-  className?: WebRuntimeDom.HTMLClassProperties
+  className?: Vitarx.HtmlClassProperties
   /**
    * 图标默认颜色
    */
@@ -62,7 +62,7 @@ type IconProps = {
    *
    * @default undefined
    */
-  style?: WebRuntimeDom.HTMLStyleProperties
+  style?: Vitarx.HtmlStyleProperties
   /**
    * 图标旋转角度
    *
@@ -77,6 +77,20 @@ type IconProps = {
    * @default ''
    */
   use?: string
+  /**
+   * 辅助文本
+   *
+   * @default undefined
+   */
+  ariaLabel?: string
+  /**
+   * 辅助文本是否隐藏
+   *
+   * @default true
+   */
+  ariaHidden?: boolean
+  /** 除以上属性以外还支持所有其他和svg元素已关的属性，包括事件，会自动绑定给svg元素 */
+  [key: string]: any
 }
 ```
 
