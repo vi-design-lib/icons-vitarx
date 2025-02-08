@@ -17,7 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     /* Vitarx Support*/
-    "types": ["vitarx/dist/index.d.ts","node"],
+    "types": ["vitarx","node"],
     "jsx": "preserve",
     "jsxImportSource": "vitarx",
     /* Paths */
