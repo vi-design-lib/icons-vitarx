@@ -6,6 +6,13 @@
   "description": "Vi Design开源项目图标库，大部分图标来源于Ant Design公开图标库，如有侵权联系处理。",
   "glyphs": [
     {
+      "icon_id": "43217855",
+      "name": "gitee",
+      "font_class": "gitee",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
       "icon_id": "4114437",
       "name": "微信",
       "font_class": "wechat",

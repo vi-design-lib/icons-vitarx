@@ -1,7 +1,7 @@
 import { load } from 'cheerio'
 import * as fs from 'node:fs'
 import * as https from 'node:https'
-import nodePath from 'node:path'
+import * as nodePath from 'node:path'
 
 interface Glyph {
   icon_id: string
@@ -39,6 +39,7 @@ function downloadAndParseIconfont(iconfontJsUrl: string): Promise<string> {
           data += chunk
         })
         response.on('end', () => {
+          // @ts-ignore
           const regex = /<svg.*?>.*?<\/svg>/s
           const match = data.match(regex)
           if (!match) return reject(new Error('No SVG found in iconfont.js'))
@@ -68,7 +69,7 @@ function toPascalCase(id: string, prefix: string = ''): string {
     .join('')
 }
 
-const iconfontJsUrl = 'https://at.alicdn.com/t/c/font_4802092_rowj3d2e2gm.js'
+const iconfontJsUrl = 'https://at.alicdn.com/t/c/font_4802092_e4t5vps2s6n.js'
 const outDir = nodePath.join(process.cwd(), '..', '..', 'src/widgets/icons')
 const iconfontJsonPath = nodePath.join(process.cwd(), 'iconfont.json')
 const iconfontJsPath = nodePath.join(process.cwd(), '..', '..', 'src/assets/iconfont.ts')
