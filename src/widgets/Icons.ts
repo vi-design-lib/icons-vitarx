@@ -61,7 +61,19 @@ export interface IconProps {
   /**
    * 引用自定义图标
    *
-   * 使用该属性的前提必须在index.html中引入iconfont.js文件
+   * 要使用自定义图标，必须在`index.html`中导入相关的资源，
+   *
+   * ```html
+   * // 一次性导入内置图标库 550+ 图标
+   * // 并不建议这样做，使用组件方式使用图表，可以在打包时进行摇树优化，减小包体积
+   * <script src="@vi-design/icons-vitarx/iconfont.js"></script>
+   *
+   * // 导入自定义的图标库
+   * <script src="https://at.alicdn.com/t/c/font_4802092_0jhy18kzqt7.js"></script>
+   *
+   * 使用 use 属性引用图标
+   * <Icons use="icon-name"></Icons>
+   * ```
    *
    * @default ''
    */
