@@ -539,7 +539,7 @@
     },
     {
       "icon_id": "4765853",
-      "name": "计时",
+      "name": "重启时间",
       "font_class": "reload-time",
       "unicode": "e79c",
       "unicode_decimal": 59292
@@ -720,6 +720,13 @@
       "unicode_decimal": 59301
     },
     {
+      "icon_id": "8094806",
+      "name": "collapse",
+      "font_class": "collapse",
+      "unicode": "e9a5",
+      "unicode_decimal": 59813
+    },
+    {
       "icon_id": "4765957",
       "name": "编辑",
       "font_class": "edit-square",
@@ -732,6 +739,13 @@
       "font_class": "compass-fill",
       "unicode": "e8a6",
       "unicode_decimal": 59558
+    },
+    {
+      "icon_id": "8094807",
+      "name": "expand",
+      "font_class": "expand",
+      "unicode": "e9a6",
+      "unicode_decimal": 59814
     },
     {
       "icon_id": "4765958",
@@ -781,6 +795,13 @@
       "font_class": "emote-fill",
       "unicode": "e8a9",
       "unicode_decimal": 59561
+    },
+    {
+      "icon_id": "8094810",
+      "name": "subnode",
+      "font_class": "sub-node",
+      "unicode": "e9a9",
+      "unicode_decimal": 59817
     },
     {
       "icon_id": "4765962",
@@ -2282,7 +2303,7 @@
     },
     {
       "icon_id": "4766762",
-      "name": "客服",
+      "name": "客户服务",
       "font_class": "customer-service",
       "unicode": "e809",
       "unicode_decimal": 59401
@@ -3079,6 +3100,13 @@
       "unicode_decimal": 59468
     },
     {
+      "icon_id": "4766984",
+      "name": "mr",
+      "font_class": "mr",
+      "unicode": "e84d",
+      "unicode_decimal": 59469
+    },
+    {
       "icon_id": "4936987",
       "name": "微博",
       "font_class": "weibo",
@@ -3091,6 +3119,20 @@
       "font_class": "share",
       "unicode": "e84e",
       "unicode_decimal": 59470
+    },
+    {
+      "icon_id": "4766986",
+      "name": "分支",
+      "font_class": "branches",
+      "unicode": "e84f",
+      "unicode_decimal": 59471
+    },
+    {
+      "icon_id": "4766995",
+      "name": "分叉",
+      "font_class": "fork",
+      "unicode": "e850",
+      "unicode_decimal": 59472
     },
     {
       "icon_id": "4767006",
@@ -3108,7 +3150,7 @@
     },
     {
       "icon_id": "4767007",
-      "name": "箭头扩大",
+      "name": "扩大",
       "font_class": "enlarge",
       "unicode": "e852",
       "unicode_decimal": 59474
@@ -3220,7 +3262,7 @@
     },
     {
       "icon_id": "4767021",
-      "name": "箭头向上",
+      "name": "上箭头",
       "font_class": "arrow-up",
       "unicode": "e85e",
       "unicode_decimal": 59486
@@ -3248,7 +3290,7 @@
     },
     {
       "icon_id": "4767023",
-      "name": "箭头向下",
+      "name": "下箭头",
       "font_class": "arrow-down",
       "unicode": "e860",
       "unicode_decimal": 59488

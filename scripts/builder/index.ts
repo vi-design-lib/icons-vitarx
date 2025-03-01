@@ -31,6 +31,14 @@ interface IconfontJson {
  */
 function downloadAndParseIconfont(iconfontJsUrl: string): Promise<string> {
   return new Promise((resolve, reject) => {
+    if (!iconfontJsUrl.startsWith('http')){
+      try {
+        resolve(fs.readFileSync(iconfontJsUrl, 'utf8'))
+      }catch (e) {
+        reject(e)
+      }
+      return
+    }
     console.log('Downloading iconfont.js...')
     https
       .get(iconfontJsUrl, (response) => {
@@ -43,7 +51,7 @@ function downloadAndParseIconfont(iconfontJsUrl: string): Promise<string> {
           const regex = /<svg.*?>.*?<\/svg>/s
           const match = data.match(regex)
           if (!match) return reject(new Error('No SVG found in iconfont.js'))
-          fs.writeFileSync(nodePath.join(process.cwd(), 'iconfont.js'), data)
+          fs.writeFileSync(iconfontJsPath, data)
           resolve(match[0])
         })
       })
@@ -69,10 +77,16 @@ function toPascalCase(id: string, prefix: string = ''): string {
     .join('')
 }
 
-const iconfontJsUrl = 'https://at.alicdn.com/t/c/font_4802092_e4t5vps2s6n.js'
+// iconfont.js URL 或 本地路径
+const iconfontJsUrl = nodePath.join(process.cwd(), '../../src/assets/iconfont.js')
+// 保存的路径，如果是iconfontJsUrl是远程路径时则会保存到iconfontJsPath
+const iconfontJsPath = iconfontJsUrl
+// 组件输出目录
 const outDir = nodePath.join(process.cwd(), '..', '..', 'src/widgets/icons')
-const iconfontJsonPath = nodePath.join(process.cwd(), 'iconfont.json')
-const iconfontJsPath = nodePath.join(process.cwd(), '..', '..', 'src/assets/iconfont.ts')
+// 本地 iconfont.json
+const iconfontJsonPath = nodePath.join(process.cwd(), '../../src/assets/iconfont.json')
+// 处理过后的iconfont.json输出路径
+const iconfontDataWritePath = nodePath.join(process.cwd(), '../../src/assets/data.ts')
 
 ;(async function () {
   // 创建目录
@@ -146,7 +160,6 @@ export default class ${component_name} extends SvgIcon {
     })
 
   fs.writeFileSync(nodePath.join(outDir, 'index.ts'), exports.join('\n'))
-
   // 对glyphs数组进行排序
   iconfontJson.glyphs = Array.from(iconMap.entries())
     .sort((a, b) => a[1].component_name.localeCompare(b[1].component_name))
@@ -171,7 +184,7 @@ export default class ${component_name} extends SvgIcon {
   const iconfontJsCode = `// 此文件由 scripts/builder/index.ts 自动生成
 export default ${JSON.stringify(iconfontJson, null, 2)} as const
 `
-  fs.writeFileSync(iconfontJsPath, iconfontJsCode)
+  fs.writeFileSync(iconfontDataWritePath, iconfontJsCode)
 
   console.log(`解析和组件生成已完成，共计生成：${glyphs.length}个图标组件。`)
 })()
