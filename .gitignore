@@ -28,5 +28,5 @@ tests
 *.sw?
 
 # 自动生成的
-src/assets/iconfont.ts
 src/widgets/icons
+src/assets/data.ts
