@@ -1,7 +1,6 @@
 {
   "name": "@vi-design/icons-vitarx",
-  "private": false,
-  "version": "0.0.1-beta.7",
+  "version": "1.0.0",
   "description": "icons-vitarx是为vitarx框架打造的图标组件。",
   "author": "ZhuChongLin <8210856@qq.com>",
   "keywords": [
