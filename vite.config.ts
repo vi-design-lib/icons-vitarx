@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import vitarx from 'vite-plugin-vitarx'
+import vitarx from '@vitarx/vite-bundler'
 
 export default defineConfig({
   plugins: [vitarx()],
