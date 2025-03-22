@@ -1,6 +1,6 @@
 {
   "name": "@vi-design/icons-vitarx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "icons-vitarx是为vitarx框架打造的图标组件。",
   "author": "ZhuChongLin <8210856@qq.com>",
   "keywords": [
@@ -37,7 +37,7 @@
     "push": "npm publish --access=public"
   },
   "peerDependencies": {
-    "vitarx": "^1.0.3"
+    "vitarx": "^1.0.3 || ^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
@@ -46,7 +46,7 @@
     "sass-embedded": "^1.83.0",
     "typescript": "^5.7.2",
     "vite": "^6.0.0",
-    "@vitarx/vite-bundler": "^1.0.0"
+    "@vitarx/vite-bundler": "^1.0.3"
   },
   "files": [
     "dist",
