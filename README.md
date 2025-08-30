@@ -1,6 +1,6 @@
 # @vi-design/icons-vitarx
 
-这是为[vitarx框架](https://github.com/vitarx-lib/framework)打造的图标组件库
+这是为[vitarx框架](https://github.com/vitarx-lib/core)打造的图标组件库
 _____________________________________________________________________
 
 ## 安装
@@ -114,6 +114,6 @@ import { Icons } from '@vi-design/icons-vitarx'
 
 export default function App() {
   // 使用自定义的图标，同样会继承Icons.setCommonProps设置的全局属性
-  return <Icons use="icon-your-icon" />
+  return <Icons use="icon-name" />
 }
 ```
