@@ -1,22 +1,19 @@
 import { defineConfig } from 'vite'
-import vitarx from '@vitarx/vite-bundler'
 
 export default defineConfig({
-  plugins: [vitarx()],
   build: {
     outDir: 'dist',
     lib: {
       entry: 'src/index.ts',
       name: 'Icons',
       fileName: (format) => `icons.${format}.js`,
-      formats: ['umd']
+      formats: ['iife']
     },
     rollupOptions: {
-      external: ['vitarx', 'vitarx/jsx-runtime'],
+      external: ['vitarx'],
       output: {
         globals: {
-          vitarx: 'Vitarx',
-          'vitarx/jsx-runtime': 'Vitarx'
+          vitarx: 'Vitarx'
         }
       }
     }
