@@ -1,14 +1,4 @@
-import {
-  computed,
-  createElement,
-  type Element,
-  type HTMLClassProperties,
-  type HTMLStyleProperties,
-  mergeCssClass,
-  mergeCssStyle,
-  reactive,
-  Widget
-} from 'vitarx'
+import { computed, createElement, DomHelper, type Element, reactive, Widget } from 'vitarx'
 
 const exclude: Array<keyof IconProps> = [
   'className',
@@ -25,7 +15,7 @@ export interface IconProps {
   /**
    * 图标样式类名
    */
-  className?: HTMLClassProperties
+  className?: Vitarx.HTMLClassProperties
   /**
    * 图标默认颜色
    */
@@ -51,7 +41,7 @@ export interface IconProps {
    *
    * @default undefined
    */
-  style?: HTMLStyleProperties
+  style?: Vitarx.HTMLStyleProperties
   /**
    * 图标旋转角度
    *
@@ -93,11 +83,47 @@ export interface IconProps {
 }
 
 /**
- * # Icon抽象类
+ * Icons 类是一个用于渲染 SVG 图标的组件类，继承自 Widget 基类。
+ * 该类提供了一套统一的图标渲染方案，支持自定义图标大小、颜色、样式等属性，
+ * 并内置了无障碍访问支持。
  *
- * 图标抽象类，用于定义图标的公共属性和构建方法。
+ * 核心功能：
+ * - 支持设置全局公共属性（通过 setCommonProps 方法）
+ * - 支持自定义图标大小、颜色、旋转角度等属性
+ * - 支持自定义样式和 CSS 类名
+ * - 支持无障碍访问（aria-label 和 aria-hidden）
+ * - 支持图标路径填充色自定义
  *
- * @abstract
+ * 使用示例：
+ * ```tsx
+ * // 设置全局公共属性
+ * Icons.setCommonProps({
+ *   size: '2em',
+ *   color: '#333'
+ * });
+ *
+ * // 使用图标
+ * //  use:图标名称或 ID  , size:图标大小 , rotate:图标旋转角度
+ * <Icons use="icon-name" size="1.5em" rotate="90"/> // 此种方式必须在index.html加载iconfont.js
+ * ```
+ *
+ * 构造函数参数：
+ * @param props - 图标属性对象，包含以下可选属性：
+ *   - use: 图标名称或 ID（必需）
+ *   - size: 图标大小，默认为 '1em'
+ *   - color: 图标颜色，默认为 'currentColor'
+ *   - style: 自定义样式对象
+ *   - className: 自定义 CSS 类名
+ *   - pathFill: 图标路径填充色
+ *   - rotate: 旋转角度（度数）
+ *   - ariaLabel: 无障碍文本
+ *   - ariaHidden: 是否隐藏无障碍文本，默认为 true
+ *
+ * 注意事项：
+ * - 图标名称（use 属性）会自动添加 # 前缀（如果未提供）
+ * - 当同时设置实例属性和全局公共属性时，实例属性优先级更高
+ * - rotate 属性默认为 0，表示不旋转
+ * - ariaLabel 默认使用图标名称（去掉 # 前缀）
  */
 export default class Icons extends Widget<IconProps> {
   static #commonProps: Omit<IconProps, 'use'> = reactive({
@@ -127,20 +153,22 @@ export default class Icons extends Widget<IconProps> {
 
   #style = computed(() => {
     if (this.props.style && Icons.#commonProps.style) {
-      return mergeCssStyle(this.props.style, Icons.#commonProps.style)
+      return DomHelper.mergeCssStyle(this.props.style, Icons.#commonProps.style)
     }
     return this.props.style || Icons.#commonProps.style
   })
+
   get style() {
     return this.#style.value
   }
 
   #className = computed(() => {
     if (this.props.className && Icons.#commonProps.className) {
-      return mergeCssClass(this.props.className, Icons.#commonProps.className)
+      return DomHelper.mergeCssClass(this.props.className, Icons.#commonProps.className)
     }
     return this.props.className || Icons.#commonProps.className
   })
+
   get className() {
     return this.#className.value
   }
@@ -204,7 +232,7 @@ export default class Icons extends Widget<IconProps> {
   /**
    * @inheritDoc
    */
-  protected build(): Element {
+  build(): Element {
     return createElement('svg', this.svgProps, createElement('use', { 'xlink:href': this.use }))
   }
 }
