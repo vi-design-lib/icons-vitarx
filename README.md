@@ -1,6 +1,6 @@
 # @vi-design/icons-vitarx
 
-这是为[vitarx框架](https://github.com/vitarx-lib/core)打造的图标组件库
+[vitarx框架](https://github.com/vitarx-lib/core)专用的图标组件库
 _____________________________________________________________________
 
 ## 安装
