@@ -1,4 +1,4 @@
-import { createElement, Element } from 'vitarx'
+import { createElement, type Element } from 'vitarx'
 import Icons from './Icons.js'
 
 export default abstract class SvgIcon extends Icons {
@@ -9,7 +9,7 @@ export default abstract class SvgIcon extends Icons {
   /**
    * @inheritDoc
    */
-  protected override build(): Element {
+  override build(): Element {
     const children = this.paths.map((d, i) => {
       const fill = this.pathFill?.[i] ?? 'currentColor'
       return createElement('path', { d, fill })
