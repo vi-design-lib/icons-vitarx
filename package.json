@@ -24,7 +24,13 @@
       "default": "./dist/assets/data.js"
     },
     "./unpkg": "./dist/icons.iife.js",
-    "./jsdelivr": "./dist/icons.iife.js"
+    "./jsdelivr": "./dist/icons.iife.js",
+    "./icons/*": {
+      "import": {
+        "types": "./dist/widgets/icons/*.d.ts",
+        "default": "./dist/widgets/icons/*.js"
+      }
+    }
   },
   "type": "module",
   "license": "MIT",
