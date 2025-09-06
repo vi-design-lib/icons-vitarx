@@ -1,7 +1,7 @@
 {
   "name": "@vi-design/icons-vitarx",
-  "version": "2.0.0-beta.1",
-  "description": "icons-vitarx是为vitarx框架打造的图标组件。",
+  "version": "2.0.0",
+  "description": "icons-vitarx是为vitarx框架打造的图标组件库。",
   "author": "ZhuChongLin <8210856@qq.com>",
   "keywords": [
     "vitarx",
@@ -37,10 +37,10 @@
   "scripts": {
     "build": "rimraf dist && vite build && tsc && cp -r src/assets/iconfont.js ./dist/assets",
     "prepublishOnly": "npm run build",
-    "push": "npm publish --access=public"
+    "push": "npm publish --access=public --registry https://registry.npmjs.org/"
   },
   "peerDependencies": {
-    "vitarx": "^3.0.0-beta.1"
+    "vitarx": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
@@ -48,7 +48,7 @@
     "prettier": "^3.3.3",
     "sass-embedded": "^1.83.0",
     "typescript": "^5.7.2",
-    "vite": "6.3.4"
+    "vite": "7.1.4"
   },
   "files": [
     "dist",
