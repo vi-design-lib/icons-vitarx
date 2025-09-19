@@ -43,8 +43,12 @@
     "vitarx": "^3.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
     "@types/node": "^22.10.2",
     "cheerio": "^1.0.0",
+    "husky": "^9.1.7",
     "prettier": "^3.3.3",
     "sass-embedded": "^1.83.0",
     "typescript": "^5.7.2",
