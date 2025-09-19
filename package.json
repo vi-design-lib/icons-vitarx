@@ -36,8 +36,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && vite build && tsc && cp -r src/assets/iconfont.js ./dist/assets",
-    "prepublishOnly": "npm run build",
-    "push": "npm publish --access=public --registry https://registry.npmjs.org/"
+    "push": "release-cli"
   },
   "peerDependencies": {
     "vitarx": "^3.0.0"
