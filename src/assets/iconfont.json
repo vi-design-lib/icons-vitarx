@@ -286,23 +286,9 @@
       "unicode_decimal": 58908
     },
     {
-      "icon_id": "10273624",
-      "name": "圆形加载1",
-      "font_class": "circle-loading-1",
-      "unicode": "e943",
-      "unicode_decimal": 59715
-    },
-    {
-      "icon_id": "36737743",
+      "icon_id": "11747910",
       "name": "安卓加载",
       "font_class": "android-loading",
-      "unicode": "e617",
-      "unicode_decimal": 58903
-    },
-    {
-      "icon_id": "11747910",
-      "name": "安卓加载1",
-      "font_class": "android-loading-1",
       "unicode": "e700",
       "unicode_decimal": 59136
     },
